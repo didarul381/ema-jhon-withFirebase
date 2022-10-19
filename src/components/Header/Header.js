@@ -14,6 +14,7 @@ const Header = () => {
                 <Link to="/orders">Orders</Link>
                 <Link to="/inventory">Inventory</Link>
                 <Link to="/about">About</Link>
+               
                 {
                     user?.uid ?
                         <button className='btn-logout' onClick={logOut}>Log out</button>
@@ -21,8 +22,10 @@ const Header = () => {
                         <>
                             <Link to="/login">Login</Link>
                             <Link to="/signup">Sign up</Link>
+                           
                         </>
                 }
+                 {user?.email && <p>{user?.email}</p>}
             </div>
         </nav>
     );

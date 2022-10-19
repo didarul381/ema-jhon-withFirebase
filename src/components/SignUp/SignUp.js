@@ -5,7 +5,7 @@ import './SignUp.css';
 
 const SignUp = () => {
     const [error, setError] = useState(null);
-    const { createUser } = useContext(AuthContext);
+    const { createUser,singInWithGoogle } = useContext(AuthContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,6 +34,14 @@ const SignUp = () => {
 
     }
 
+      const handleGoogleSingin=()=>{
+        singInWithGoogle()
+        .then(result=>{
+            const user =result.user;
+            console.log(user)
+        }).catch(error => console.error(error));
+      }
+
     return (
         <div className='form-container'>
             <h2 className='form-title'>Sign Up</h2>
@@ -54,6 +62,7 @@ const SignUp = () => {
             </form>
             <p>Already Have an Account <Link to='/login'>Login</Link></p>
             <p className='text-error'>{error}</p>
+            <button onClick={handleGoogleSingin}>Google</button>
         </div>
     );
 };
